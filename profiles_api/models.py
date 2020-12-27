@@ -7,7 +7,7 @@ from django.contrib.auth.models import BaseUserManager
 # Create your models here.
 
 
-class UserProfileManager():
+class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
     def create_user(self, email, name, password=None):
         """Create a new user profile"""
@@ -45,12 +45,12 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         """Retrieve full name of user"""
-        return self.NAME
+        return self.name
 
     def get_short_name(self):
         """Retrieve short name of user"""
-        return self.NAME
+        return self.name
 
     def __str__(self):
         """Return string rep of our user"""
-        return self.EmailField
+        return self.email
